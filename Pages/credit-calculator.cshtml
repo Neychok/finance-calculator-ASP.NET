@@ -1,0 +1,295 @@
+﻿@page "/credit-calculator/{savedHash?}"
+@model CreditModel
+@{
+}
+<h1 class="text-center mb-5">Кредитен Калкулатор</h1>
+<form class="container needs-validation credit-calculator-form" style="width: 500px" novalidate method="post" action="">
+
+    <!-- Credit Amount -->
+    <div class="row mb-3">
+        <div class="col">
+            <div class="form-floating" id="credit_amount_fieldset">
+                <input type="number" class="form-control" placeholder="Размер на кредит" min="100" step="1" required id="credit_amount">
+                <label for="credit_amount">Размер на кредит (лв.) *</label>
+                <div class="valid-feedback">
+                    Правилно.
+                </div>
+                <div class="invalid-feedback">
+                    Невалидни данни. Въведете сума между 100 лв. и 10,000,00 лв.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+
+            <!-- Credit Length -->
+            <div class="form-floating" id="credit_length_fieldset">
+                <input type="number" class="form-control" placeholder="Срок" min="1" max="960" step="1" id="credit_length" required>
+                <label for="credit_length">Срок (месеци) *</label>
+                <div class="valid-feedback">
+                    Правилно.
+                </div>
+                <div class="invalid-feedback">
+                    Невалидни данни. Въведете срок до 960 месеца.
+                </div>
+            </div>
+        </div>
+
+        <!-- Credit Interest -->
+        <div class="col">
+            <div class="form-floating" id="credit_interest_fieldset">
+                <input type="number" class="form-control" placeholder="Лихва" min="0" max="500" step="0.01" id="credit_interest" required>
+                <label for="credit_interest">Лихва (%) *</label>
+                <div class="valid-feedback">
+                    Правилно
+                </div>
+                <div class="invalid-feedback">
+                    Невалидни данни. Въведете лихва до 500 процента.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payments Type -->
+    <div class="row mb-3">
+        <div class="col">
+            <div id="help" class="form-text">Изберете вид вноски. *</div>
+            <select class="form-select" id="payment_type" required>
+                <option value="annuity" selected>Анюитетни вноски</option>
+                <option value="descreasing">Намаляващи вноски</option>
+            </select>
+            <div class="valid-feedback">
+                Правилно
+            </div>
+            <div class="invalid-feedback">
+                Невалидни данни. Изберете вид вноски.
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Fields -->
+    <div class="row mb-3">
+        <div class="accordion" id="additional_fields">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#promoPeriod">
+                        Промоционален Период
+                    </button>
+                </h2>
+
+                <!-- Promotional Fields -->
+                <div id="promoPeriod" class="accordion-collapse collapse" data-bs-parent="#additional_fields">
+                    <div class="accordion-body">
+                        <div class="row mb-2 g-2">
+
+                            <!-- Promotional Period -->
+                            <div class="col">
+                                <div class="form-floating" id="promo_period_fieldset">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Промоционален Период" min="0" max="960" step="1" id="promo_period">
+                                    <label for="promo_period">Промо. период (месеци)</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни. Промоционалният период трябва да е по-малък от срока на кредита.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Promotional Interest -->
+                            <div class="col">
+                                <div class="form-floating" id="promo_interest_fieldset">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Промоционална лихва" min="0" step="0.01" id="promo_interest">
+                                    <label for="promo_interest">Промо. лихва</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни. Въведете лихва до 500 процента.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gratis Period -->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-floating" id="gratis_period_fieldset">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Гратисен период" min="0" step="1" id="gratis_period">
+                                    <label for="gratis_period">Гратисен период</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.  Гратисния период трябва да е по-малък от целия период на кредита.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fees Fields -->
+            <div class="accordion-item" id="fees_fieldset">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fees">
+                        Такси
+                    </button>
+                </h2>
+                <div id="fees" class="accordion-collapse collapse" data-bs-parent="#additional_fields">
+                    <div class="accordion-body">
+                        <div class="row mb-3 g-2">
+
+                            <!-- Starter Fees -->
+                            <div class="lead">Първоначални Такси</div>
+
+                            <!-- Application Fee -->
+                            <div class="input-group" id="application_fee_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Такса Кандидатстване" min="0" step="0.01" id="application_fee">
+                                    <label for="application_fee">Такса кандидатстване</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни. 
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="application_fee_option">
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
+                                </select>
+                            </div>
+
+                            <!-- Processing Fee -->
+                            <div class="input-group" id="processing_fee_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Такса Обработка" min="0" step="0.01" id="processing_fee">
+                                    <label for="processing_fee">Такса обработка</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="processing_fee_option">
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
+                                </select>
+                            </div>
+
+                            <!-- Other Fees -->
+                            <div class="input-group" id="other_starter_fees_fieldset" >
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Други такси" min="0" step="0.01" id="other_starter_fees">
+                                    <label for="other_starter_fees">Други такси</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="other_starter_fees_option">
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Yearly Fees -->
+                        <div class="row mb-3 g-2">
+                            <div class="lead">Годишни Такси</div>
+
+                            <!-- Annual Management Fee -->
+                            <div class="input-group" id="yearly_management_fees_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Годишна такса управление" min="0" step="0.01" id="yearly_management_fees">
+                                    <label for="yearly_management_fees">Годишна такса управление</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="yearly_management_fees_option">
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
+                                </select>
+                            </div>
+
+                            <!-- Other Yearly Fees -->
+                            <div class="input-group" id="yearly_other_fees_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Други годишни такси" min="0" step="0.01" id="yearly_other_fees">
+                                    <label for="yearly_other_fees">Други годишни такси</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="yearly_other_fees_option">
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Monthly Fees -->
+                        <div class="row mb-3 g-2">
+                            <div class="lead">Месечни Такси</div>
+
+                            <!-- Monthly Management Fee -->
+                            <div class="input-group" id="monthly_management_fees_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Месечна такса управление" min="0" step="0.01" id="monthly_management_fees">
+                                    <label for="monthly_management_fees">Месечна такса управление</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="monthly_management_fees_option">
+                                    <option value="currency">лв.</option>
+                                    <option value="percent" selected>%</option>
+                                </select>
+                            </div>
+
+                            <!-- Other Monthly Fees -->
+                            <div class="input-group" id="monthly_other_fees_fieldset">
+                                <div class="form-floating flex-grow-1">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Други месечни такси" min="0" step="0.01" id="monthly_other_fees">
+                                    <label for="monthly_other_fees">Други месечни такси</label>
+                                    <div class="valid-feedback">
+                                        Правилно.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Невалидни данни.
+                                    </div>
+                                </div>
+                                <select class="form-select" style="width: 100px;" id="monthly_other_fees_option">
+                                    <option value="currency">лв.</option>
+                                    <option value="percent" selected>%</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div
+
+    <!-- Submit Button -->
+    <div class="row mb-3 px-3">
+        <button type="submit" class="btn btn-primary">Изчисли</button>
+    </div>
+</form>

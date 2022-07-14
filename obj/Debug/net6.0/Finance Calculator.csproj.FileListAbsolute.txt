@@ -1,0 +1,26 @@
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\appsettings.Development.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\appsettings.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.staticwebassets.runtime.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.exe
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.deps.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.runtimeconfig.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.dll
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\bin\Debug\net6.0\Finance Calculator.pdb
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.csproj.AssemblyReference.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.GeneratedMSBuildEditorConfig.editorconfig
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.AssemblyInfoInputs.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.AssemblyInfo.cs
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.csproj.CoreCompileInputs.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.MvcApplicationPartsAssemblyInfo.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.RazorAssemblyInfo.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.RazorAssemblyInfo.cs
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\staticwebassets.build.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\staticwebassets.development.json
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\scopedcss\bundle\Finance Calculator.styles.css
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\scopedcss\projectbundle\Finance Calculator.bundle.scp.css
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.dll
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\refint\Finance Calculator.dll
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.pdb
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\Finance Calculator.genruntimeconfig.cache
+Z:\2_University\ASP.NET\Finance Calculator Revisited\Finance Calculator\obj\Debug\net6.0\ref\Finance Calculator.dll
