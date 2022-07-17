@@ -7,8 +7,4 @@
     <RootNamespace>Finance_Calculator</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\calculators\" />
-  </ItemGroup>
-
 </Project>

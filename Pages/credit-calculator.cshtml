@@ -3,19 +3,19 @@
 @{
 }
 <h1 class="text-center mb-5">Кредитен Калкулатор</h1>
-<form class="container needs-validation credit-calculator-form" style="width: 500px" novalidate method="post" action="">
+<form class="container credit-calculator-form" style="width: 500px" novalidate method="post">
 
     <!-- Credit Amount -->
     <div class="row mb-3">
         <div class="col">
             <div class="form-floating" id="credit_amount_fieldset">
-                <input type="number" class="form-control" placeholder="Размер на кредит" min="100" step="1" required id="credit_amount">
+                <input  asp-for="credit_amount" value="@ViewData["credit_amount"]" type="number" class="form-control @ViewData["credit_amount_error"]" placeholder="Размер на кредит" min="100" step="1" required>
                 <label for="credit_amount">Размер на кредит (лв.) *</label>
                 <div class="valid-feedback">
                     Правилно.
                 </div>
                 <div class="invalid-feedback">
-                    Невалидни данни. Въведете сума между 100 лв. и 10,000,00 лв.
+                    Невалидни данни. Въведете сума между 100 лв. и 10,000,000 лв.
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
 
             <!-- Credit Length -->
             <div class="form-floating" id="credit_length_fieldset">
-                <input type="number" class="form-control" placeholder="Срок" min="1" max="960" step="1" id="credit_length" required>
+                <input asp-for="credit_length" value="@ViewData["credit_length"]" type="number" class="form-control @ViewData["credit_length_error"]" placeholder="Срок" min="1" max="960" step="1"  required>
                 <label for="credit_length">Срок (месеци) *</label>
                 <div class="valid-feedback">
                     Правилно.
@@ -40,7 +40,7 @@
         <!-- Credit Interest -->
         <div class="col">
             <div class="form-floating" id="credit_interest_fieldset">
-                <input type="number" class="form-control" placeholder="Лихва" min="0" max="500" step="0.01" id="credit_interest" required>
+                <input asp-for="credit_interest" value="@ViewData["credit_interest"]" type="number" class="form-control @ViewData["credit_interest_error"]" placeholder="Лихва" min="0" max="500" step="0.01" required>
                 <label for="credit_interest">Лихва (%) *</label>
                 <div class="valid-feedback">
                     Правилно
@@ -56,7 +56,7 @@
     <div class="row mb-3">
         <div class="col">
             <div id="help" class="form-text">Изберете вид вноски. *</div>
-            <select class="form-select" id="payment_type" required>
+            <select asp-for="payment_type" value="@ViewData["payment_type"]" class="form-select" required>
                 <option value="annuity" selected>Анюитетни вноски</option>
                 <option value="descreasing">Намаляващи вноски</option>
             </select>
@@ -87,7 +87,7 @@
                             <!-- Promotional Period -->
                             <div class="col">
                                 <div class="form-floating" id="promo_period_fieldset">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Промоционален Период" min="0" max="960" step="1" id="promo_period">
+                                    <input asp-for="promo_period" value="@ViewData["promo_period"]" type="number" class="form-control form-control-sm @ViewData["promo_period_error"]" placeholder="Промоционален Период" min="0" max="960" step="1">
                                     <label for="promo_period">Промо. период (месеци)</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -101,7 +101,7 @@
                             <!-- Promotional Interest -->
                             <div class="col">
                                 <div class="form-floating" id="promo_interest_fieldset">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Промоционална лихва" min="0" step="0.01" id="promo_interest">
+                                    <input asp-for="promo_interest" value="@ViewData["promo_interest"]" type="number" class="form-control form-control-sm @ViewData["promo_interest_error"]" placeholder="Промоционална лихва" min="0" step="0.01">
                                     <label for="promo_interest">Промо. лихва</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -117,7 +117,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-floating" id="gratis_period_fieldset">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Гратисен период" min="0" step="1" id="gratis_period">
+                                    <input asp-for="gratis_period" value="@ViewData["gratis_period"]" type="number" class="form-control form-control-sm @ViewData["gratis_period_error"]" placeholder="Гратисен период" min="0" step="1">
                                     <label for="gratis_period">Гратисен период</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -149,7 +149,7 @@
                             <!-- Application Fee -->
                             <div class="input-group" id="application_fee_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Такса Кандидатстване" min="0" step="0.01" id="application_fee">
+                                    <input asp-for="application_fee" value="@ViewData["application_fee"]" type="number" class="form-control form-control-sm @ViewData["application_fee_error"]" placeholder="Такса Кандидатстване" min="0" step="0.01">
                                     <label for="application_fee">Такса кандидатстване</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -158,7 +158,7 @@
                                         Невалидни данни. 
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="application_fee_option">
+                                <select asp-for="application_fee_option" value="@ViewData["application_fee_option"]" class="form-select @ViewData["application_fee_option_error"]" style="width: 100px;">
                                     <option value="currency" selected>лв.</option>
                                     <option value="percent">%</option>
                                 </select>
@@ -167,7 +167,7 @@
                             <!-- Processing Fee -->
                             <div class="input-group" id="processing_fee_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Такса Обработка" min="0" step="0.01" id="processing_fee">
+                                    <input asp-for="processing_fee" value="@ViewData["processing_fee"]" type="number" class="form-control form-control-sm @ViewData["processing_fee_error"]" placeholder="Такса Обработка" min="0" step="0.01">
                                     <label for="processing_fee">Такса обработка</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -176,16 +176,16 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="processing_fee_option">
-                                    <option value="currency" selected>лв.</option>
-                                    <option value="percent">%</option>
+                                <select asp-for="processing_fee_option" value="@ViewData["processing_fee_option"]" class="form-select @ViewData["processing_fee_option_error"]" style="width: 100px;" >
+                                    <option value="currency">лв.</option>
+                                    <option value="percent selected">%</option>
                                 </select>
                             </div>
 
                             <!-- Other Fees -->
                             <div class="input-group" id="other_starter_fees_fieldset" >
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Други такси" min="0" step="0.01" id="other_starter_fees">
+                                    <input asp-for="other_starter_fees" value="@ViewData["other_starter_fees"]" type="number" class="form-control form-control-sm @ViewData["other_starter_fees_error"]" placeholder="Други такси" min="0" step="0.01">
                                     <label for="other_starter_fees">Други такси</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -194,7 +194,7 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="other_starter_fees_option">
+                                <select asp-for="other_starter_fees_option" value="@ViewData["other_starter_fees_option"]" class="form-select @ViewData["other_starter_fees_option_error"]" style="width: 100px;">
                                     <option value="currency" selected>лв.</option>
                                     <option value="percent">%</option>
                                 </select>
@@ -208,7 +208,7 @@
                             <!-- Annual Management Fee -->
                             <div class="input-group" id="yearly_management_fees_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Годишна такса управление" min="0" step="0.01" id="yearly_management_fees">
+                                    <input asp-for="yearly_management_fees" value="@ViewData["yearly_management_fees"]" type="number" class="form-control form-control-sm @ViewData["yearly_management_fees_error"]" placeholder="Годишна такса управление" min="0" step="0.01">
                                     <label for="yearly_management_fees">Годишна такса управление</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -217,16 +217,16 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="yearly_management_fees_option">
-                                    <option value="currency" selected>лв.</option>
-                                    <option value="percent">%</option>
+                                <select class="form-select @ViewData["yearly_management_fees_option_error"]" value="@ViewData["yearly_management_fees_option"]" style="width: 100px;" asp-for="yearly_management_fees_option">
+                                    <option value="currency">лв.</option>
+                                    <option value="percent" selected>%</option>
                                 </select>
                             </div>
 
                             <!-- Other Yearly Fees -->
                             <div class="input-group" id="yearly_other_fees_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Други годишни такси" min="0" step="0.01" id="yearly_other_fees">
+                                    <input asp-for="yearly_other_fees" value="@ViewData["yearly_other_fees"]" type="number" class="form-control form-control-sm @ViewData["yearly_other_fees_error"]" placeholder="Други годишни такси" min="0" step="0.01">
                                     <label for="yearly_other_fees">Други годишни такси</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -235,7 +235,7 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="yearly_other_fees_option">
+                                <select asp-for="yearly_other_fees_option" value="@ViewData["yearly_other_fees_option"]" class="form-select @ViewData["yearly_other_fees_option_error"]" style="width: 100px;" >
                                     <option value="currency" selected>лв.</option>
                                     <option value="percent">%</option>
                                 </select>
@@ -249,7 +249,7 @@
                             <!-- Monthly Management Fee -->
                             <div class="input-group" id="monthly_management_fees_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Месечна такса управление" min="0" step="0.01" id="monthly_management_fees">
+                                    <input asp-for="monthly_management_fees" value="@ViewData["monthly_management_fees"]" type="number" class="form-control form-control-sm @ViewData["monthly_management_fees_error"]" placeholder="Месечна такса управление" min="0" step="0.01">
                                     <label for="monthly_management_fees">Месечна такса управление</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -258,7 +258,7 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="monthly_management_fees_option">
+                                <select asp-for="monthly_management_fees_option" value="@ViewData["monthly_management_fees_option"]" class="form-select @ViewData["monthly_management_fees_option_error"]" style="width: 100px;">
                                     <option value="currency">лв.</option>
                                     <option value="percent" selected>%</option>
                                 </select>
@@ -267,7 +267,7 @@
                             <!-- Other Monthly Fees -->
                             <div class="input-group" id="monthly_other_fees_fieldset">
                                 <div class="form-floating flex-grow-1">
-                                    <input type="number" class="form-control form-control-sm" placeholder="Други месечни такси" min="0" step="0.01" id="monthly_other_fees">
+                                    <input asp-for="monthly_other_fees" type="number" value="@ViewData["monthly_other_fees"]" class="form-control form-control-sm @ViewData["monthly_other_fees_error"]" placeholder="Други месечни такси" min="0" step="0.01">
                                     <label for="monthly_other_fees">Други месечни такси</label>
                                     <div class="valid-feedback">
                                         Правилно.
@@ -276,9 +276,9 @@
                                         Невалидни данни.
                                     </div>
                                 </div>
-                                <select class="form-select" style="width: 100px;" id="monthly_other_fees_option">
-                                    <option value="currency">лв.</option>
-                                    <option value="percent" selected>%</option>
+                                <select asp-for="monthly_other_fees_option" value="@ViewData["monthly_other_fees_option"]" class="form-select @ViewData["monthly_other_fees_option_error"]" style="width: 100px;" >
+                                    <option value="currency" selected>лв.</option>
+                                    <option value="percent">%</option>
                                 </select>
                             </div>
                         </div>
@@ -292,4 +292,21 @@
     <div class="row mb-3 px-3">
         <button type="submit" class="btn btn-primary">Изчисли</button>
     </div>
+
 </form>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Месечна вноска</th>
+            <th scope="col">Вноска главница</th>
+            <th scope="col">Вноска лихва</th>
+            <th scope="col">Остатък главница</th>
+            <th scope="col">Такси и комисионни</th>
+            <th scope="col">Паричен поток</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
